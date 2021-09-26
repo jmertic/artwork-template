@@ -30,6 +30,7 @@ layout: project ( default option, but can leave blank to put your own HTML in he
 
 The directory structure under the folder should look like...
 
+```
 logosetname
 +--format1
   |--color1
@@ -45,4 +46,4 @@ logosetname
   |--color2
     |--logosetname-format2-color2.svg
     |--logosetname-format2-color2.png
-
+```
