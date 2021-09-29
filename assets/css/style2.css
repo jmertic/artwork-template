@@ -16,6 +16,10 @@ html {
   font-family:Roboto,-apple-system,BlinkMacSystemFont,"Helvetica Neue","Segoe UI","Oxygen","Ubuntu","Cantarell","Open Sans",sans-serif;
 }
 
+section {
+  background-size:cover;
+}
+
 .container {
   width:100% !important;
 }
@@ -100,6 +104,10 @@ tbody tr:nth-child(odd) {
   background-color: #f2f2f2;
 }
 
+tbody tr:nth-child(even) {
+  background-color: #c2c2c2;
+}
+
 table {
   width:65%;
   margin-bottom:5%;
@@ -135,7 +143,11 @@ table.logos-table tbody tr td {
   width:100%;
   padding:10%;
   display: block;
-  max-height: 150px
+  max-height: 150px;
+  max-width: 250px;
+  height: auto;
+  width: auto;
+  margin: auto;
 }
 
 em {
@@ -170,7 +182,7 @@ em {
   width:100%;
 }
 
-.logos {
+.logos:not(body.logos) {
   padding-left:10%;
   padding-right:10%;
   padding-top:2%;
@@ -198,7 +210,7 @@ button {
     margin-bottom:5%;
   }
 
-  .logos {
+  .logos:not(body.logos)  {
     padding-left:5%;
     padding-right:5%;
     padding-top:2%;
