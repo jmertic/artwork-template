@@ -32,4 +32,4 @@ logo_categories:
 # don't touch ;-)  
 readme_index:
   with_frontmatter: true
-
+theme: minima
