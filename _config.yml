@@ -15,6 +15,8 @@ theme_color_1: 36b0c9
 theme_color_2: 159957 
 # optionally, specify a header background image
 header_image:
+# optionally, specify an image for the background of the main section
+section_image:
 # text for the home page which outlines how the images should be used ( licensing and trademark stuff )
 trademark_text: Use of any trademark or logo is subject to the trademark policy available at <a href="https://www.linuxfoundation.org/trademark-usage">https://www.linuxfoundation.org/trademark-usage</a> with the key excepts available at <a href="LICENSE.md">LICENSE.md</a>. Questions? Please email <a href="mailto:info@projectname.org">info@projectname.org</a>. 
 # categories for projects, used in the front matter for each project page

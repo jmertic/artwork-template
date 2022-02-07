@@ -17,7 +17,9 @@ html {
 }
 
 section {
-  background:url("../img/aswf_bg.jpg");
+  {% if site.section_image %}
+  background:url("{{ site.section_image | relative_url }}");
+  {% endif %}
   background-size:cover;
 }
 
