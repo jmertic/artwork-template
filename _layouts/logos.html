@@ -28,10 +28,14 @@ layout: default
 			<th></th>
 			<th colspan="{{image_types | size}}">PNG</th>
 			<th colspan="{{image_types | size}}">SVG</th>
+			<th colspan="{{image_types | size}}">EPS</th>
 		</tr>
 {% if image_types.size > 1 %}
 		<tr>
 			<th></th>
+{% for image_type in image_types %}
+			<th>{{image_type | capitalize }}</th>
+{% endfor %}
 {% for image_type in image_types %}
 			<th>{{image_type | capitalize }}</th>
 {% endfor %}
