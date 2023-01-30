@@ -71,7 +71,7 @@ layout: default
             {% capture image_path %}{{image_type}}/{{image_color}}/{{project_slug}}-{{image_type}}-{{image_color}}.eps{% endcapture %}
             {% assign file = site.static_files | where_exp: "file", "file.path contains image_path" | first %}
             {% if file %}
-            <td><a href="{{image_path}}" download><img src="{{image_path}}" width="200"></a></td>
+            <td><a href="{{image_path}}" download><img src="../../assets/img/eps.svg" width="200" style="width: 100px !important;"></a></td>
             {% else %}
             <td class="empty"></td>
             {% endif %}
