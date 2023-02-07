@@ -58,7 +58,7 @@ section {
   display: table-cell;
 }
 
-a {
+button a {
   color:white;
   text-decoration:none;
 }
