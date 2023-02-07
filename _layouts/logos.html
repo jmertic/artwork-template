@@ -14,6 +14,9 @@ layout: default
 {% assign path = file.path | split: "/" %}
 {% assign image_colors = image_colors | push: path[4] %}
 {% assign image_types = image_types | push: path[3] %}
+{% if file.path contains ".svg" %}{% assign has_svg = true %}{% endif %}
+{% if file.path contains ".png" %}{% assign has_png = true %}{% endif %}
+{% if file.path contains ".eps" %}{% assign has_eps = true %}{% endif %}
 {% endif %}
 {% endif %}
 {% endfor %}
@@ -26,29 +29,36 @@ layout: default
 <thead>
 		<tr>
 			<th></th>
-			<th colspan="{{image_types | size}}">PNG</th>
-			<th colspan="{{image_types | size}}">SVG</th>
-			<th colspan="{{image_types | size}}">EPS</th>
+                        {% if has_png %}<th colspan="{{image_types | size}}">PNG</th>{% endif %} 
+			{% if has_svg %}<th colspan="{{image_types | size}}">SVG</th>{% endif %} 
+			{% if has_eps %}<th colspan="{{image_types | size}}">EPS</th>{% endif %} 
 		</tr>
 {% if image_types.size > 1 %}
 		<tr>
 			<th></th>
+{% if has_png %}
 {% for image_type in image_types %}
 			<th>{{image_type | capitalize }}</th>
 {% endfor %}
+{% endif %}
+{% if has_svg %}
 {% for image_type in image_types %}
 			<th>{{image_type | capitalize }}</th>
 {% endfor %}
+{% endif %}
+{% if has_eps %}
 {% for image_type in image_types %}
 			<th>{{image_type | capitalize }}</th>
 {% endfor %}
-		</tr>
+{% endif %}
+                </tr>
 {% endif %}
 	</thead>	
     <tbody>
         {% for image_color in image_colors %}
         <tr>
             <th>{{image_color | capitalize}}</th>
+            {% if has_png %}
             {% for image_type in image_types %}
             {% capture image_path %}{{image_type}}/{{image_color}}/{{project_slug}}-{{image_type}}-{{image_color}}.png{% endcapture %}
             {% assign file = site.static_files | where_exp: "file", "file.path contains image_path" | first %}
@@ -58,6 +68,8 @@ layout: default
             <td class="empty"></td>
             {% endif %}
             {% endfor %}
+            {% endif %}
+            {% if has_svg %}
             {% for image_type in image_types %}
             {% capture image_path %}{{image_type}}/{{image_color}}/{{project_slug}}-{{image_type}}-{{image_color}}.svg{% endcapture %}
             {% assign file = site.static_files | where_exp: "file", "file.path contains image_path" | first %}
@@ -67,6 +79,8 @@ layout: default
             <td class="empty"></td>
             {% endif %}
             {% endfor %}
+            {% endif %}
+            {% if has_eps %}
             {% for image_type in image_types %}
             {% capture image_path %}{{image_type}}/{{image_color}}/{{project_slug}}-{{image_type}}-{{image_color}}.eps{% endcapture %}
             {% assign file = site.static_files | where_exp: "file", "file.path contains image_path" | first %}
@@ -76,6 +90,7 @@ layout: default
             <td class="empty"></td>
             {% endif %}
             {% endfor %}
+            {% endif %}
         </tr>
         {% endfor %}
     </tbody>
