@@ -7,7 +7,7 @@ permalink: /
   <div class="logos">
     <h2>{{ site.title }}</h2>
     
-    <p>{{ site.trademark_text }}</p>
+    <p>{% include trademark_text.html %}</p>
 
 {% for category in site.logo_categories %}
 {% assign logo_groups = site.pages | where: "level", category | sort: "title" | sort: "order" %}
