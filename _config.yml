@@ -5,9 +5,9 @@ description: >-
 # favicon for the site
 favicon: assets/img/favicon.png
 # primary project logo - used as the logo that will show up in search results
-primary_logo: other/aswf/logo/aqua/aswf-logo-aqua.svg
+primary_logo: 
 # header for the logo - usually this will be the primary logo in a white out version
-header_logo: other/aswf/logo/white/aswf-logo-white.svg
+header_logo: 
 # GH repo this is at
 github_repo: https://github.com/jmertic/artwork-template
 # gradiant colors for the headers: theme_color_1 -> theme_color_2
@@ -23,13 +23,8 @@ trademark_text: Use of any trademark or logo is subject to the trademark policy 
 logo_categories:
   - Incubating
   - Adopted
-# text on main logo page outlining trademark policy.
-trademark_text: Use of any trademark or logo is subject to the trademark policy available at <a href="https://www.linuxfoundation.org/trademark-usage">https://www.linuxfoundation.org/trademark-usage</a> with the key excepts available at <a href="LICENSE.md">LICENSE.md</a>. Refer to the <a href="aswf-brand-book.pdf">ASWF Brand Book</a> for guidelines on how to use the logo. Questions? Please email <a href="mailto:info@aswf.io">info@aswf.io</a>. 
-# categories of logos, for grouping on main logo page. Must match level: in front matter of each logoset README.md file
-logo_categories: 
-  - Incubating Projects
-  - Adopted Projects
-  - Other Logos
+# copyright footer
+copyright_footer: Copyright &copy; The Linux Foundation&reg;. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our <a href="https://www.linuxfoundation.org/trademark-usage">Trademark Usage</a> page. Linux is a registered trademark of Linus Torvalds. <a href="http://www.linuxfoundation.org/privacy">Privacy Policy</a> and <a href="http://www.linuxfoundation.org/terms">Terms of Use</a>.
 
 # don't touch ;-)  
 readme_index:
