@@ -1,0 +1,18 @@
+---
+---
+{
+{% for category in site.logo_categories %}
+{% assign logo_groups = site.pages | where: "level", category | sort: "title" | sort: "order" %}
+{% for logo_group in logo_groups %}
+{% if forloop.first %}
+  "{{ category }}": {
+{% endif %}
+    "{{ logo_group.title }}": {
+      "uri": "{{ logo_group.dir }}",
+      "primary_logo": "{{ logo_group.featured_image }}",
+      "dark_logo": "{{ logo_group.featured_image }}"
+    }{% if not forloop.last %},{% endif %}
+{% endfor %}
+  }{% if not forloop.last %},{% endif %}
+{% endfor %}
+}
