@@ -10,7 +10,7 @@
     "category": "{{category}}",
     "primary_logo": "{{ logo_group.featured_image }}",
     "dark_logo": "{{ logo_group.featured_image }}"
-  }{% if forloop.last == false and islast == false %},{% endif %}
+  }{% if forloop.last == false or islast == false %},{% endif %}
 {%- endfor -%}
 {%- endfor %}
 }
