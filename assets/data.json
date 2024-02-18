@@ -3,13 +3,14 @@
 {
 {%- for category in site.logo_categories -%}
 {%- assign logo_groups = site.pages | where: "level", category | sort: "title" | sort: "order" -%}
+{%- assign islast = forloop.last -%}
 {%- for logo_group in logo_groups %}
   "{{ logo_group.dir }}": {
     "name": "{{ logo_group.title }}",
     "category": "{{category}}",
     "primary_logo": "{{ logo_group.featured_image }}",
     "dark_logo": "{{ logo_group.featured_image }}"
-  },
+  }{% if forloop.last == false and islast == false %},{% endif %}
 {%- endfor -%}
 {%- endfor %}
 }
