@@ -1,7 +1,7 @@
 ---
 ---
 {
-{%- for category in site.logo_categories -%}
+{% for category in site.logo_categories -%}
 {%- assign logo_groups = site.pages | where: "level", category | sort: "title" | sort: "order" -%}
 {%- for logo_group in logo_groups -%}
   "{{ logo_group.dir }}": {
@@ -11,5 +11,5 @@
     "dark_logo": "{{ logo_group.featured_image }}"
   }{% if forloop.last == false %},{% endif %}
 {%- endfor -%}
-{%- endfor -%}
+{%- endfor %}
 }
