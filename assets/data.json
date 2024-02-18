@@ -11,8 +11,8 @@
       "uri": "{{ logo_group.dir }}",
       "primary_logo": "{{ logo_group.featured_image }}",
       "dark_logo": "{{ logo_group.featured_image }}"
-    }{% if not forloop.last %},{% endif %}
+    }{% if forloop.last == false %},{% endif %}
 {% endfor %}
-  }{% if not forloop.last %},{% endif %}
+  }{% if forloop.last == false %},{% endif %}
 {% endfor %}
 }
