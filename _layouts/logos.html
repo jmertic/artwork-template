@@ -12,6 +12,7 @@ layout: default
 {% if file.path contains page.dir %}
 {% if file.path contains ".svg" or file.path contains ".png" or file.path contains ".eps" %}
 {% assign path = file.path | split: "/" %}
+<pre>{{ file.path }}</pre>
 {% assign image_colors = image_colors | push: path[4] %}
 {% assign image_types = image_types | push: path[3] %}
 {% if file.path contains ".svg" %}{% assign has_svg = true %}{% endif %}
@@ -26,7 +27,6 @@ layout: default
 {% assign project_slug = page.url | split: "/" | last %}
 
 <pre>
-    {{ site.static_files | jsonify }}
     {{ image_types | jsonify }}
     {{ image_colors | jsonify }}
     {{ project_slug }}
