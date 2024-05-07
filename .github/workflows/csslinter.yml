@@ -17,4 +17,6 @@ jobs:
     steps:
     - name: stylelinter
       uses: actions-hub/stylelint@v1.1.6
+      env:
+        PATTERN: "**/*.css"
             
