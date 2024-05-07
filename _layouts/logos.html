@@ -26,9 +26,9 @@ layout: default
 {% assign project_slug = page.url | split: "/" | last %}
 
 <pre>
-    {{ site.static_files | inspect }}
-    {{ image_types | inspect }}
-    {{ image_colors | inspect }}
+    {{ site.static_files | jsonify }}
+    {{ image_types | jsonify }}
+    {{ image_colors | jsonify }}
     {{ project_slug }}
 </pre>
 
