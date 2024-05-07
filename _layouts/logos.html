@@ -12,7 +12,6 @@ layout: default
 {% if file.path contains page.dir %}
 {% if file.path contains ".svg" or file.path contains ".png" or file.path contains ".eps" %}
 {% assign path = file.path | split: "/" %}
-<pre>{{ path | jsonify }}</pre>
 {% assign image_colors = image_colors | push: path[-2] %}
 {% assign image_types = image_types | push: path[-3] %}
 {% if file.path contains ".svg" %}{% assign has_svg = true %}{% endif %}
@@ -25,12 +24,6 @@ layout: default
 {% assign image_types = image_types | uniq | compact %}
 {% assign image_colors = image_colors | uniq | compact %}
 {% assign project_slug = page.url | split: "/" | last %}
-
-<pre>
-    {{ image_types | jsonify }}
-    {{ image_colors | jsonify }}
-    {{ project_slug }}
-</pre>
 
 <table class="logos-table">
 <thead>
@@ -92,7 +85,7 @@ layout: default
             {% capture image_path %}{{image_type}}/{{image_color}}/{{project_slug}}-{{image_type}}-{{image_color}}.eps{% endcapture %}
             {% assign file = site.static_files | where_exp: "file", "file.path contains image_path" | first | downcase %}
             {% if file %}
-            <td><a href="{{image_path}}" download><img src="../../assets/img/eps.svg" width="200" style="width: 100px !important;"></a></td>
+            <td><a href="{{image_path}}" download><img src="/assets/img/eps.svg" width="200" style="width: 100px !important;"></a></td>
             {% else %}
             <td class="empty"></td>
             {% endif %}
