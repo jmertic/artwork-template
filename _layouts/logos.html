@@ -13,8 +13,8 @@ layout: default
 {% if file.path contains ".svg" or file.path contains ".png" or file.path contains ".eps" %}
 {% assign path = file.path | split: "/" %}
 <pre>{{ path | jsonify }}</pre>
-{% assign image_colors = image_colors | push: path[4] %}
-{% assign image_types = image_types | push: path[3] %}
+{% assign image_colors = image_colors | push: path[-2] %}
+{% assign image_types = image_types | push: path[-3] %}
 {% if file.path contains ".svg" %}{% assign has_svg = true %}{% endif %}
 {% if file.path contains ".png" %}{% assign has_png = true %}{% endif %}
 {% if file.path contains ".eps" %}{% assign has_eps = true %}{% endif %}
