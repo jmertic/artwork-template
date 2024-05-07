@@ -10,12 +10,10 @@ on:
 permissions:  # added using https://github.com/step-security/secure-repo
   contents: read
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  linters:
+    name: stylelint
     runs-on: ubuntu-latest
+
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3.6.0
-    - name: stylelinter
-      uses: actions-hub/stylelint@79a72921dfce2e51791be2df406f0c103fb47553 # v1.1.6
+      - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3.6.0
+      - uses: actions-hub/stylelint@79a72921dfce2e51791be2df406f0c103fb47553 # v1.1.6
