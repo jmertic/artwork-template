@@ -26,7 +26,10 @@ layout: default
 {% assign project_slug = page.url | split: "/" | last %}
 
 <pre>
-    {{ site.static_files | jsonify }}
+    {{ site.static_files | inspect }}
+    {{ image_types | inspect }}
+    {{ image_colors | inspect }}
+    {{ project_slug }}
 </pre>
 
 <table class="logos-table">
