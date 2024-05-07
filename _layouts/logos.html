@@ -62,7 +62,7 @@ layout: default
             {% for image_type in image_types %}
             {% capture image_path %}{{image_type}}/{{image_color}}/{{project_slug}}-{{image_type}}-{{image_color}}.png{% endcapture %}
             {% assign file = site.static_files | where_exp: "file", "file.path contains image_path" | first | downcase %}
-            {{file}}
+            {{image_path}}
 	    {% if file %}
             <td><a href="{{image_path}}" download><img src="{{image_path}}" width="200"></a></td>
             {% else %}
@@ -74,7 +74,7 @@ layout: default
             {% for image_type in image_types %}
             {% capture image_path %}{{image_type}}/{{image_color}}/{{project_slug}}-{{image_type}}-{{image_color}}.svg{% endcapture %}
             {% assign file = site.static_files | where_exp: "file", "file.path contains image_path" | first | downcase %}
-            {{file}}
+            {{image_path}}
 	    {% if file %}
             <td><a href="{{image_path}}" download><img src="{{image_path}}" width="200"></a></td>
             {% else %}
@@ -86,7 +86,7 @@ layout: default
             {% for image_type in image_types %}
             {% capture image_path %}{{image_type}}/{{image_color}}/{{project_slug}}-{{image_type}}-{{image_color}}.eps{% endcapture %}
             {% assign file = site.static_files | where_exp: "file", "file.path contains image_path" | first | downcase %}
-            {{file}}
+            {{image_path}}
 	    {% if file %}
             <td><a href="{{image_path}}" download><img src="../../assets/img/eps.svg" width="200" style="width: 100px !important;"></a></td>
             {% else %}
