@@ -28,27 +28,27 @@ layout: default
 <table class="logos-table">
 <thead>
 		<tr>
-			<th></th>
-                        {% if has_png %}<th colspan="{{image_types | size}}">PNG</th>{% endif %} 
-			{% if has_svg %}<th colspan="{{image_types | size}}">SVG</th>{% endif %} 
-			{% if has_eps %}<th colspan="{{image_types | size}}">EPS</th>{% endif %} 
+			<th scope="col"></th>
+                        {% if has_png %}<th scope="col" colspan="{{image_types | size}}">PNG</th>{% endif %} 
+			{% if has_svg %}<th scope="col" colspan="{{image_types | size}}">SVG</th>{% endif %} 
+			{% if has_eps %}<th scope="col" colspan="{{image_types | size}}">EPS</th>{% endif %} 
 		</tr>
 {% if image_types.size > 1 %}
 		<tr>
-			<th></th>
+			<th scope="col"></th>
 {% if has_png %}
 {% for image_type in image_types %}
-			<th>{{image_type | capitalize }}</th>
+			<th scope="col">{{image_type | capitalize }}</th>
 {% endfor %}
 {% endif %}
 {% if has_svg %}
 {% for image_type in image_types %}
-			<th>{{image_type | capitalize }}</th>
+			<th scope="col">{{image_type | capitalize }}</th>
 {% endfor %}
 {% endif %}
 {% if has_eps %}
 {% for image_type in image_types %}
-			<th>{{image_type | capitalize }}</th>
+			<th scope="col">{{image_type | capitalize }}</th>
 {% endfor %}
 {% endif %}
                 </tr>
@@ -57,13 +57,13 @@ layout: default
     <tbody>
         {% for image_color in image_colors %}
         <tr>
-            <th>{{image_color | capitalize}}</th>
+            <th scope="row">{{image_color | capitalize}}</th>
             {% if has_png %}
             {% for image_type in image_types %}
             {% capture image_path %}{{image_type}}/{{image_color}}/{{project_slug}}-{{image_type}}-{{image_color}}.png{% endcapture %}
             {% assign file = site.static_files | where_exp: "file", "file.path contains image_path" | first | downcase %}
             {% if file %}
-            <td><a href="{{image_path}}" download><img src="{{image_path}}" width="200"></a></td>
+	    <td><a href="{{image_path}}" download><img alt="{{image_path}}" src="{{image_path}}" width="200"></a></td>
             {% else %}
             <td class="empty"></td>
             {% endif %}
@@ -74,7 +74,7 @@ layout: default
             {% capture image_path %}{{image_type}}/{{image_color}}/{{project_slug}}-{{image_type}}-{{image_color}}.svg{% endcapture %}
             {% assign file = site.static_files | where_exp: "file", "file.path contains image_path" | first | downcase %}
             {% if file %}
-            <td><a href="{{image_path}}" download><img src="{{image_path}}" width="200"></a></td>
+	    <td><a href="{{image_path}}" download><img alt="{{image_path}}" src="{{image_path}}" width="200"></a></td>
             {% else %}
             <td class="empty"></td>
             {% endif %}
@@ -85,7 +85,7 @@ layout: default
             {% capture image_path %}{{image_type}}/{{image_color}}/{{project_slug}}-{{image_type}}-{{image_color}}.eps{% endcapture %}
             {% assign file = site.static_files | where_exp: "file", "file.path contains image_path" | first | downcase %}
             {% if file %}
-            <td><a href="{{image_path}}" download><img src="/assets/img/eps.svg" width="200" style="width: 100px !important;"></a></td>
+            <td><a href="{{image_path}}" download><img alt="{{image_path}}" src="/assets/img/eps.svg" width="200" style="width: 100px !important;"></a></td>
             {% else %}
             <td class="empty"></td>
             {% endif %}
