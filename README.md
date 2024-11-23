@@ -1,5 +1,8 @@
 # Artwork Repository Template
 
+[![License](https://img.shields.io/github/license/jmertic/artwork-template)](LICENSE)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=jmertic_artwork-template&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=jmertic_artwork-template)
+
 This template repo is designed for a project to showcase logos easily in multiple formats. Generally speaking, a given project will prepare artwork in 2 formats (PNG & SVG) and at least 3 versions (color/black/white).
 
 # How to use this template
