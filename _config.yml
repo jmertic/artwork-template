@@ -21,6 +21,8 @@ section_image:
 logo_categories:
   - Incubating
   - Adopted
+# default category for CLOtributor
+clotributor_category_default:
 
 # don't touch ;-)  
 readme_index:
