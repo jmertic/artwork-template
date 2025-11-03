@@ -8,8 +8,9 @@
   "{{ logo_group.dir }}": {
     "name": "{{ logo_group.title }}",
     "category": "{{category}}",
+    "clotributor_category","{%- if logo_group.clotributor_category -%}{{ logo_group.clotributor_category }}{%- else -%}{{ site.clotributor_category_default }}{%- endif -%}",
     "primary_logo": "{{ logo_group.featured_image }}",
-    "dark_logo": "{{ logo_group.featured_image }}"
+    "dark_logo": "{%- if logo_group.featured_image_dark -%}{{ logo_group.featured_image_dark }}{%- else -%}{{ logo_group.featured_image }}{%- endif -%}"
   }{% if forloop.last == false or islast == false %},{% endif %}
 {%- endfor -%}
 {%- endfor %}
