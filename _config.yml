@@ -22,6 +22,7 @@ logo_categories:
   - Incubating
   - Adopted
 
-# don't touch ;-)  
+# don't touch ;-)
+baseurl: "/"
 readme_index:
   with_frontmatter: true
