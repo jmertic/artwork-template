@@ -49,9 +49,10 @@ section {
   vertical-align:middle;
   text-align: center;
   display: table-cell;
+  background-color: #f6f6f7;
 }
 .imagesquare {
-  border:1px solid #aaaaaa;
+  border:0;
   margin:1%;
   background-color:#ffffff;
   text-align: center;
