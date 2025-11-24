@@ -56,6 +56,10 @@ section {
   background-color:#ffffff;
   text-align: center;
   display: table-cell;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px #0000000d;
+  transition: transform .2s ease;
+  overflow: hidden;
 }
 
 button a {
@@ -159,7 +163,11 @@ em {
 }
 
 .imagesquarecta {
+  {% if site.theme_color_1 %}
+  background-color: #{{ site.theme_color_1 }};
+  {% else %}
   background-color:#aaaaaa;
+  {% endif %}
   color:white;
   text-transform:uppercase;
   font-weight:800;
@@ -168,6 +176,10 @@ em {
   width:100%;
   text-align:center;
   font-size:0.9em;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px #0000000d;
+  transition: transform .2s ease;
+  overflow: hidden;
 }
 
 .outer-wrapper{
