@@ -10,7 +10,7 @@ permalink: /
     <p>{% include trademark_text.html %}</p>
 
 {% for category in site.logo_categories %}
-{% assign logo_groups = site.pages | where: "level", category | sort: "title" | sort: "order" %}
+{% assign logo_groups = site.pages | where: "level", category | sort_natural: "title" | sort_natural: "order" %}
 {% for logo_group in logo_groups %}
 {% if forloop.first %}
 <h3>{{ category }}</h3>
