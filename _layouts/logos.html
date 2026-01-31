@@ -12,92 +12,58 @@ layout: default
 
 {% assign image_types = "" | split: "," %}
 {% assign image_colors = "" | split: "," %}
+{% assign image_formats = "" | split: "," %}
 {% for file in site.static_files %}
 {% if file.path contains page.dir %}
 {% if file.path contains ".svg" or file.path contains ".png" or file.path contains ".eps" %}
 {% assign path = file.path | split: "/" %}
 {% assign image_colors = image_colors | push: path[-2] %}
 {% assign image_types = image_types | push: path[-3] %}
-{% if file.path contains ".svg" %}{% assign has_svg = true %}{% endif %}
-{% if file.path contains ".png" %}{% assign has_png = true %}{% endif %}
-{% if file.path contains ".eps" %}{% assign has_eps = true %}{% endif %}
+{% if file.path contains ".svg" %}{% assign image_formats = image_formats | push: "svg" %}{% endif %}
+{% if file.path contains ".png" %}{% assign image_formats = image_formats | push: "png" %}{% endif %}
+{% if file.path contains ".eps" %}{% assign image_formats = image_formats | push: "eps" %}{% endif %}
 {% endif %}
 {% endif %}
 {% endfor %}
 
 {% assign image_types = image_types | uniq | compact %}
 {% assign image_colors = image_colors | uniq | compact %}
+{% assign image_formats = image_formats | uniq | compact %}
 {% assign project_slug = page.url | split: "/" | last %}
 
+{% for image_type in image_types %}
+<h2>{{ image_type | capitalize }}</h2>
 <table class="logos-table">
 <thead>
-		<tr>
-			<th scope="col"></th>
-                        {% if has_png %}<th scope="col" colspan="{{image_types | size}}">PNG</th>{% endif %} 
-			{% if has_svg %}<th scope="col" colspan="{{image_types | size}}">SVG</th>{% endif %} 
-			{% if has_eps %}<th scope="col" colspan="{{image_types | size}}">EPS</th>{% endif %} 
-		</tr>
-{% if image_types.size > 1 %}
-		<tr>
-			<th scope="col"></th>
-{% if has_png %}
-{% for image_type in image_types %}
-			<th scope="col">{{image_type | capitalize }}</th>
-{% endfor %}
-{% endif %}
-{% if has_svg %}
-{% for image_type in image_types %}
-			<th scope="col">{{image_type | capitalize }}</th>
-{% endfor %}
-{% endif %}
-{% if has_eps %}
-{% for image_type in image_types %}
-			<th scope="col">{{image_type | capitalize }}</th>
-{% endfor %}
-{% endif %}
-                </tr>
-{% endif %}
-	</thead>	
-    <tbody>
-        {% for image_color in image_colors %}
-        <tr>
-            <th scope="row">{{image_color | capitalize}}</th>
-            {% if has_png %}
-            {% for image_type in image_types %}
-            {% capture image_path %}{{image_type}}/{{image_color}}/{{project_slug}}-{{image_type}}-{{image_color}}.png{% endcapture %}
-            {% assign file = site.static_files | where_exp: "file", "file.path contains image_path" | first | downcase %}
-            {% if file %}
-	    <td><a href="{{image_path}}" download><img alt="{{image_path}}" src="{{image_path}}" width="200"></a></td>
-            {% else %}
-            <td class="empty"></td>
-            {% endif %}
-            {% endfor %}
-            {% endif %}
-            {% if has_svg %}
-            {% for image_type in image_types %}
-            {% capture image_path %}{{image_type}}/{{image_color}}/{{project_slug}}-{{image_type}}-{{image_color}}.svg{% endcapture %}
-            {% assign file = site.static_files | where_exp: "file", "file.path contains image_path" | first | downcase %}
-            {% if file %}
-	    <td><a href="{{image_path}}" download><img alt="{{image_path}}" src="{{image_path}}" width="200"></a></td>
-            {% else %}
-            <td class="empty"></td>
-            {% endif %}
-            {% endfor %}
-            {% endif %}
-            {% if has_eps %}
-            {% for image_type in image_types %}
-            {% capture image_path %}{{image_type}}/{{image_color}}/{{project_slug}}-{{image_type}}-{{image_color}}.eps{% endcapture %}
-            {% assign file = site.static_files | where_exp: "file", "file.path contains image_path" | first | downcase %}
-            {% if file %}
-            <td><a href="{{image_path}}" download><img alt="{{image_path}}" src="/assets/img/eps.svg" width="200" style="width: 100px !important;"></a></td>
-            {% else %}
-            <td class="empty"></td>
-            {% endif %}
-            {% endfor %}
-            {% endif %}
-        </tr>
-        {% endfor %}
-    </tbody>
+	<tr>
+		<th class="empty"></th>
+		{% for image_color in image_colors %}
+		<th scope="row">{{image_color | capitalize}}</th>
+		{% endfor %}
+	</tr>
+</thead>
+<tbody>
+	{% for image_format in image_formats %}
+	<tr>
+		<th scope="col">{{image_format | upcase }}</th>
+        	{% for image_color in image_colors %}
+		{% capture image_path %}{{image_type}}/{{image_color}}/{{project_slug}}-{{image_type}}-{{image_color}}.{{image_format}}{% endcapture %}
+            	{% assign file = site.static_files | where_exp: "file", "file.path contains image_path" | first | downcase %}
+            	{% if file == 'jekyll::drops::staticfiledrop' %}
+		{% if image_format == 'eps' %}
+		<td><a href="{{image_path}}" download><img alt="{{image_path}}" src="/assets/img/eps.svg" width="200" style="width: 100px !important;"></a></td>
+		{% else %}
+		<td><a href="{{image_path}}" download><img alt="{{image_path}}" src="{{image_path}}" width="200"></a></td>
+            	{% endif %}
+            	{% else %}
+            	<td class="empty"></td>
+            	{% endif %}
+            	{% endfor %}
+	</tr>
+	{% endfor %}
+</tbody>
 </table>
+{% endfor %}
+
 
 {{ content }}

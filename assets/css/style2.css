@@ -97,15 +97,27 @@ h3 {
 }
 
 td, th, tr {
-border:1px solid #909090;
-font-weight:400;
-width:10%;
-position:relative;
+  font-weight:400;
+  width:10%;
+  position:relative;
+}
+
+tr {
+  height: 15em;
+}
+
+thead tr, tbody tr:has(th) {
+  height: 3em;
+}
+
+th {
+  font-weight:800;
+  font-size: larger;
 }
 
 td img {
   width:100%;
-  padding:20px;
+  padding:1em;
 }
 
 tbody tr:nth-child(odd) {
@@ -116,10 +128,19 @@ tbody tr:nth-child(even) {
   background-color: #c2c2c2;
 }
 
+thead tr th {
+  background-color: #{% if site.theme_color_1 %}{{ site.theme_color_1 }}{% else %}#aaaaaa{% endif %};
+  color: white;
+}
+
 table {
   width:65%;
   margin-bottom:5%;
   margin-top:2%;
+  border-radius: 12px;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
 }
 
 table.logos-table tbody tr td:not(.empty) {
