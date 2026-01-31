@@ -24,6 +24,7 @@ logo_categories:
 # default category for CLOtributor
 clotributor_category_default:
 
-# don't touch ;-)  
+# don't touch ;-)
+baseurl: "/"
 readme_index:
   with_frontmatter: true
