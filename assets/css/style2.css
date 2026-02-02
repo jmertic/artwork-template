@@ -133,7 +133,7 @@ tbody tr:nth-child(even) {
 }
 
 thead tr th {
-  background-color: #{% if site.theme_color_1 %}{{ site.theme_color_1 }}{% else %}#aaaaaa{% endif %};
+  background-color: #{% if site.theme_color_1 %}{{ site.theme_color_1 }}{% else %}aaaaaa{% endif %};
   color: white;
 }
 
