@@ -50,11 +50,7 @@ layout: default
 		{% capture image_path %}{{image_type}}/{{image_color}}/{{project_slug}}-{{image_type}}-{{image_color}}.{{image_format}}{% endcapture %}
             	{% assign file = site.static_files | where_exp: "file", "file.path contains image_path" | first | downcase %}
             	{% if file == 'jekyll::drops::staticfiledrop' %}
-		{% if image_format == 'eps' %}
-		<td><a href="{{image_path}}" download><img alt="{{image_path}}" src="/assets/img/eps.svg" width="200" style="width: 100px !important;"></a></td>
-		{% else %}
-		<td><a href="{{image_path}}" download><img alt="{{image_path}}" src="{{image_path}}" width="200"></a></td>
-            	{% endif %}
+		<td><a href="{{image_path}}" download><img alt="{{image_path}}" src="{% if image_format == 'eps' %}/assets/img/eps.svg{% else %}{{image_path}}{% endif %}" width="200"></a></td>
             	{% else %}
             	<td class="empty"></td>
             	{% endif %}
