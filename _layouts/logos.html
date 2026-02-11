@@ -22,6 +22,7 @@ layout: default
 {% if file.path contains ".svg" %}{% assign image_formats = image_formats | push: "svg" %}{% endif %}
 {% if file.path contains ".png" %}{% assign image_formats = image_formats | push: "png" %}{% endif %}
 {% if file.path contains ".eps" %}{% assign image_formats = image_formats | push: "eps" %}{% endif %}
+{% if file.path contains ".jpg" %}{% assign image_formats = image_formats | push: "jpg" %}{% endif %}
 {% endif %}
 {% endif %}
 {% endfor %}
