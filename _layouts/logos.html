@@ -15,7 +15,7 @@ layout: default
 {% assign image_formats = "" | split: "," %}
 {% for file in site.static_files %}
 {% if file.path contains page.dir %}
-{% if file.path contains ".svg" or file.path contains ".png" or file.path contains ".eps" %}
+{% if file.path contains ".svg" or file.path contains ".png" or file.path contains ".eps" or file.path contains ".jpg" %}
 {% assign path = file.path | split: "/" %}
 {% assign image_colors = image_colors | push: path[-2] %}
 {% assign image_types = image_types | push: path[-3] %}
@@ -33,13 +33,13 @@ layout: default
 {% assign project_slug = page.url | split: "/" | last %}
 
 {% for image_type in image_types %}
-<h2>{{ image_type | replace: '_', ' ' | capitalize }}</h2>
+<h2>{% include titleize.html text=image_type %}</h2>
 <table class="logos-table">
 <thead>
 	<tr>
 		<th class="empty"></th>
 		{% for image_color in image_colors %}
-		<th scope="row">{{image_color | replace: '_', ' ' | capitalize}}</th>
+		<th scope="row">{% include titleize.html text=image_color %}</th>
 		{% endfor %}
 	</tr>
 </thead>
