@@ -29,7 +29,7 @@ layout: default
 
 {% assign image_types = image_types | uniq | compact %}
 {% assign image_colors = image_colors | uniq | compact %}
-{% assign image_formats = image_formats | uniq | compact %}
+{% assign image_formats = image_formats | uniq | compact | reverse %}
 {% assign project_slug = page.url | split: "/" | last %}
 
 {% for image_type in image_types %}
@@ -39,7 +39,11 @@ layout: default
 	<tr>
 		<th class="empty"></th>
 		{% for image_color in image_colors %}
+		{% capture dir_path %}{{project_slug}}/{{image_type}}/{{image_color}}/{% endcapture %}
+		{% assign dir = site.static_files | where_exp: "file", "file.path contains dir_path" | first | downcase %}
+		{% if dir == 'jekyll::drops::staticfiledrop' %}
 		<th scope="row">{% include titleize.html text=image_color %}</th>
+		{% endif %}
 		{% endfor %}
 	</tr>
 </thead>
@@ -47,15 +51,19 @@ layout: default
 	{% for image_format in image_formats %}
 	<tr>
 		<th scope="col">{{image_format | upcase }}</th>
-        	{% for image_color in image_colors %}
-		{% capture image_path %}{{image_type}}/{{image_color}}/{{project_slug}}-{{image_type}}-{{image_color}}.{{image_format}}{% endcapture %}
-            	{% assign file = site.static_files | where_exp: "file", "file.path contains image_path" | first | downcase %}
-            	{% if file == 'jekyll::drops::staticfiledrop' %}
-		<td><a href="{{image_path}}" download><img alt="{{image_path}}" src="{% if image_format == 'eps' %}/assets/img/eps.svg{% else %}{{image_path}}{% endif %}" width="200"></a></td>
-            	{% else %}
-            	<td class="empty"></td>
-            	{% endif %}
-            	{% endfor %}
+    {% for image_color in image_colors %}
+    {% capture dir_path %}{{project_slug}}/{{image_type}}/{{image_color}}/{% endcapture %}
+    {% assign dir = site.static_files | where_exp: "file", "file.path contains dir_path" | first | downcase %}
+    {% if dir == 'jekyll::drops::staticfiledrop' %}
+    {% capture image_path %}{{image_type}}/{{image_color}}/{{project_slug}}-{{image_type}}-{{image_color}}.{{image_format}}{% endcapture %}
+    {% assign file = site.static_files | where_exp: "file", "file.path contains image_path" | first | downcase %}
+    {% if file == 'jekyll::drops::staticfiledrop' %}
+    <td><a href="{{image_path}}" download><img alt="{{image_path}}" src="{% if image_format == 'eps' %}/assets/img/eps.svg{% else %}{{image_path}}{% endif %}" width="200"></a></td>
+    {% else %}
+    <td class="empty"></td>
+    {% endif %}
+    {% endif %}
+    {% endfor %}
 	</tr>
 	{% endfor %}
 </tbody>
