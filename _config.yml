@@ -23,6 +23,8 @@ logo_categories:
   - Adopted
 # default category for CLOtributor
 clotributor_category_default:
+# contact/support email
+support_email: 
 
 # don't touch ;-)
 baseurl: "/"
