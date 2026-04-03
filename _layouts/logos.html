@@ -37,7 +37,7 @@ layout: default
 <table class="logos-table">
 <thead>
 	<tr>
-		<th class="empty"></th>
+		<th scope="row" class="empty"></th>
 		{% for image_color in image_colors %}
 		{% capture dir_path %}{{project_slug}}/{{image_type}}/{{image_color}}/{% endcapture %}
 		{% assign dir = site.static_files | where_exp: "file", "file.path contains dir_path" | first | downcase %}
