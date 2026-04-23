@@ -1,5 +1,3 @@
-@import url("https://necolas.github.io/normalize.css/4.1.1/normalize.css")
-
 * { box-sizing: border-box; }
 
 input, select, textarea, button { font-family: inherit; font-size: inherit; line-height: inherit; }
