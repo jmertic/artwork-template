@@ -17,7 +17,6 @@
   <link rel="stylesheet" type="text/css" href="{{ "/assets/css/style.css" | relative_url }}">
   <link rel="stylesheet" type="text/css" href="{{ "/assets/css/style2.css" | relative_url }}">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   {%- if page.project -%}
   <title>{{ page.project }} - {{ site.title }}</title>
   {%- elsif page.title -%}
@@ -25,18 +24,19 @@
   {%- else -%}
   <title>{{ site.title }}</title>
   {%- endif -%}
-  {% if site.ga_tracking_id %}
-  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga_tracking_id }}"></script>
-  <script>
-    globalThis.dataLayer = globalThis.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', '{{ site.ga_tracking_id }}', {'anonymize_ip': true });
-  </script>
+  {% if site.gtm_container_id %}
+  <!-- Google Tag Manager -->
+  <script type="text/javascript" nonce="dcfe81b933">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','{{ site.gtm_container_id }}');</script>
+  <!-- End Google Tag Manager -->
   {% endif %}
 </head>
 
 <body{% if page.id %} id="{{ page.id }}"{% endif %} class="{{ page.layout }}">
+{% if site.gtm_container_id %}
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ site.gtm_container_id }}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+{% endif %}
 
 <div class="page-header">
   <div class="container">
