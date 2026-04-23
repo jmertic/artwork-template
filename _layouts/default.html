@@ -34,7 +34,7 @@
 <body{% if page.id %} id="{{ page.id }}"{% endif %} class="{{ page.layout }}">
 {% if site.gtm_container_id %}
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ site.gtm_container_id }}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe title="GTM" src="https://www.googletagmanager.com/ns.html?id={{ site.gtm_container_id }}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 {% endif %}
 
@@ -51,7 +51,7 @@
 </div>
 
 {{ content }}
-  
+
 <p>
 {% include copyright_footer.html %}
 </p>
