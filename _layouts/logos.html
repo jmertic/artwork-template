@@ -28,6 +28,35 @@ layout: default
 {% endfor %}
 
 {% assign image_types = image_types | uniq | compact %}
+
+{% assign priority_list = "" | split: "" %}
+
+{% if image_types contains "primary" %}
+  {% assign item = "primary" | split: "," %}
+  {% assign priority_list = priority_list | concat: item %}
+{% endif %}
+{% if image_types contains "horizontal" %}
+  {% assign item = "horizontal" | split: "," %}
+  {% assign priority_list = priority_list | concat: item %}
+{% endif %}
+{% if image_types contains "stacked" %}
+  {% assign item = "stacked" | split: "," %}
+  {% assign priority_list = priority_list | concat: item %}
+{% endif %}
+{% if image_types contains "icon" %}
+  {% assign item = "icon" | split: "," %}
+  {% assign priority_list = priority_list | concat: item %}
+{% endif %}
+
+{% assign remaining_list = "" | split: "" %}
+{% for type in image_types %}
+  {% unless type == "primary" or type == "horizontal" or type == "stacked" or type == "icon" %}
+    {% assign item = type | split: "," %}
+    {% assign remaining_list = remaining_list | concat: item %}
+  {% endunless %}
+{% endfor %}
+
+{% assign image_types = priority_list | concat: remaining_list %}
 {% assign image_colors = image_colors | uniq | compact %}
 {% assign image_formats = image_formats | uniq | compact | reverse %}
 {% assign project_slug = page.url | split: "/" | last %}
